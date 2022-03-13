@@ -22,7 +22,8 @@ description: |
 dependencies:
   - zlib
   - expat
-
+  - libffi
+  
 in:
   version: 3.9.6
 
