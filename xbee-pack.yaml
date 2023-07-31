@@ -24,13 +24,13 @@ dependencies:
   - expat
   - libffi
   
-in:
+var:
   version: 3.9.6
 
 provision:
   - url:
-      from: https://www.python.org/ftp/python/{% version %}/Python-{% version %}.tar.xz
-      todir: "{% xbeeSrc %}"
+      from: https://www.python.org/ftp/python/{{ .version }}/Python-{{ .version }}.tar.xz
+      todir: "{{ .xbee.src }}"
 
 build:
   - shell:
@@ -42,7 +42,7 @@ build:
             --with-ensurepip=yes
             --enable-optimizations
         - make -j12
-        - make install DESTDIR={% xbeeOut %}
-      directory: "{% xbeeSrc %}/Python-{% version %}"
+        - make install DESTDIR={{ .xbee.out }}
+      directory: "{{ .xbee.src }}/Python-{{ .version }}"
 
 
