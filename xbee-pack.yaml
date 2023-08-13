@@ -19,7 +19,7 @@ description: |
 
     python3: is an interpreted, interactive, object-oriented programming language
 
-dependencies:
+builders:
   - zlib
   - expat
   - libffi
