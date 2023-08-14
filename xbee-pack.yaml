@@ -28,9 +28,7 @@ var:
   version: 3.9.6
 
 provision:
-  - url:
-      from: https://www.python.org/ftp/python/{{ .version }}/Python-{{ .version }}.tar.xz
-      todir: "{{ .xbee.src }}"
+  url: https://www.python.org/ftp/python/{{ .version }}/Python-{{ .version }}.tar.xz
 
 build:
   - shell:
