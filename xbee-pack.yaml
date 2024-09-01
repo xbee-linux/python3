@@ -25,10 +25,11 @@ builders:
   - libffi
   
 var:
-  version: 3.9.6
+  xbee:
+    version: 3.9.6
 
 provision:
-  url: https://www.python.org/ftp/python/{{ .version }}/Python-{{ .version }}.tar.xz
+  url: https://www.python.org/ftp/python/{{ .xbee.version }}/Python-{{ .xbee.version }}.tar.xz
 
 build:
   - shell:
@@ -41,6 +42,6 @@ build:
             --enable-optimizations
         - make -j12
         - make install DESTDIR={{ .xbee.out }}
-      directory: "{{ .xbee.src }}/Python-{{ .version }}"
+      directory: "{{ .xbee.src }}/Python-{{ .xbee.version }}"
 
 
