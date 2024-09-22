@@ -1,5 +1,7 @@
 schema-version: 1.0
 
+type: builder
+
 description: |
   The Python 3 package contains the Python development environment. It is useful for object-oriented programming, writing scripts, prototyping large programs, or developing entire applications.
 
@@ -17,14 +19,33 @@ description: |
 
     python3: is an interpreted, interactive, object-oriented programming language
 
-builders:
-  - ./python3-builder
-  - expat
-
 dependencies:
   - openssl
 
-  
+builders:
+  - zlib
+  - expat
+  - libffi
+
 var:
   xbee:
-    version: 3.9.6
+    version:
+
+provision:
+  url: https://www.python.org/ftp/python/{{ .xbee.version }}/Python-{{ .xbee.version }}.tar.xz
+
+build:
+  - shell:
+      cmds:
+        - ./configure --prefix=/usr
+          --enable-shared
+          --with-system-expat
+          --with-system-ffi
+          --with-ensurepip=yes
+          --enable-optimizations
+          --with-openssl=/usr
+        - make -j12
+        - make install DESTDIR={{ .xbee.out }}
+      directory: "{{ .xbee.src }}/Python-{{ .xbee.version }}"
+
+
