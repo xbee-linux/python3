@@ -17,11 +17,11 @@ description: |
 
     python3: is an interpreted, interactive, object-oriented programming language
 
-builders:
+builder:
   - ./python3-builder
   - expat
 
-dependencies:
+dependency:
   - openssl
 
   
